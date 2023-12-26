@@ -8,8 +8,8 @@
 </head>
 <body>
   <h1>Halaman About</h1>
-  <h3>Farrel Sirah</h3>
-  <p>farrelsirah@gmail.com</p>
-  <img src="" alt="">
+  <h3><?php echo $name; ?></h3>
+  <p><?php echo $email; ?></p>
+  <img src="img/<?php echo $image; ?>" alt="<?php echo $name; ?>" width="300">
 </body>
 </html>

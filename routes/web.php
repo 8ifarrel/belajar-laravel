@@ -19,7 +19,11 @@ Route::get('/', function () {
 });
 
 Route::get('/about', function () {
-    return view('about');
+    return view('about', [
+        "name" => "Farrel Sirah",
+        "email" => "farrelsirah@gmail.com",
+        "image" => "chika-fujiwara.jpg"
+    ]);
 });
 
 Route::get('/blog', function () {
