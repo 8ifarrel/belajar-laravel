@@ -2,7 +2,10 @@
 
 @section('container')
   <article>
-    <h2>{{ $post->title }}</h2>
+    <h1>{{ $post->title }}</h1>
+
+    <p>By Farrel Sirah in <a href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a></p>
+
     {!! $post->body !!}
   </article>
 
