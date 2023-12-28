@@ -2,6 +2,7 @@
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
@@ -49,6 +50,13 @@ Route::get('/categories/{category:slug}', function(Category $category){
     'posts' => $category->posts,
     'category' => $category->name
    ]); 
+});
+
+Route::get('/author/{user:username}', function(User $user){
+    return view('posts', [
+        'title' => $user->name,
+        'posts' => $user->posts
+    ]);
 });
 
 Route::get('/dashboard', function () {
