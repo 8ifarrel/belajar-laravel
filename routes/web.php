@@ -37,27 +37,11 @@ Route::get('/blog', [PostController::class, 'index']);
 
 Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
-Route::get('/categories', function(){
-    return view('categories', [
-        'title' => 'Post Categories',
-        'categories' => Category::all()
-    ]); 
-});
+Route::get('/categories', [PostController::class, 'categories']);
 
-Route::get('/categories/{category:slug}', function(Category $category){
-   return view('category', [
-    'title' => $category->name,
-    'posts' => $category->posts,
-    'category' => $category->name
-   ]); 
-});
+Route::get('/category/{category:slug}', [PostController::class, 'category']);
 
-Route::get('/author/{user:username}', function(User $user){
-    return view('posts', [
-        'title' => $user->name,
-        'posts' => $user->posts
-    ]);
-});
+Route::get('/author/{user:username}', [PostController::class, 'author']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
