@@ -37,13 +37,13 @@ class DatabaseSeeder extends Seeder
         User::factory(5)->create();
 
         Category::create([
-            'name' => 'Python',
-            'slug' => 'python'
+            'name' => 'Data Analysis',
+            'slug' => 'data-analysis'
         ]);
 
         Category::create([
-            'name' => 'C/C++',
-            'slug' => 'c-cpp'
+            'name' => 'Multimedia',
+            'slug' => 'multimedia'
         ]);
 
         Category::create([

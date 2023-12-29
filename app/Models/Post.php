@@ -12,6 +12,8 @@ class Post extends Model
     // protected $fillable = ['title', 'slug', 'excerpt', 'body'];
     protected $guarded = ['id'];
 
+    // protected $with = ['category', 'user']; Cara lain untuk menggunakan eager loading
+
     public function category()
     {
         return $this->belongsTo(Category::class);

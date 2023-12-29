@@ -12,8 +12,8 @@ class PostController extends Controller
     public function index()
     {
         return view('posts', [
-            "title" => "Posts",
-            "posts" => Post::all()
+            "title" => "All Posts",
+            "posts" => Post::with(['user', 'category'])->latest()->get()
         ]);
     }
 
@@ -29,24 +29,23 @@ class PostController extends Controller
     {
         return view('categories', [
             'title' => 'Post Categories',
-            'categories' => Category::all()
+            'categories' => Category::with('category')->all()
         ]); 
     }
 
     public function category(Category $category)
     {
         return view('posts', [
-            'title' => $category->name . ' Category Posts',
-            'posts' => $category->posts,
-            'category' => $category->name
+            'title' => "$category->name Category Posts",
+            'posts' => $category->posts->load('category', 'user')
         ]);
     }
 
     public function author(User $user)
     {
         return view('posts', [
-            'title' => 'Posts by '. $user->name,
-            'posts' => $user->posts
+            'title' => "Posts by $user->name",
+            'posts' => $user->posts->load('category', 'user')
         ]);
     }
 }
