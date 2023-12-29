@@ -13,6 +13,7 @@ class PostController extends Controller
     {
         return view('posts', [
             "title" => "All Posts",
+            'active' => 'posts',
             "posts" => Post::with(['user', 'category'])->latest()->get()
         ]);
     }
@@ -21,6 +22,7 @@ class PostController extends Controller
     {    
         return view('post', [
             "title" => $post->title,
+            'active' => 'posts',
             "post" => $post
         ]);
     }
@@ -29,7 +31,8 @@ class PostController extends Controller
     {
         return view('categories', [
             'title' => 'Post Categories',
-            'categories' => Category::with('category')->all()
+            'active' => 'categories',
+            'categories' => Category::all()
         ]); 
     }
 
@@ -37,6 +40,7 @@ class PostController extends Controller
     {
         return view('posts', [
             'title' => "$category->name Category Posts",
+            'active' => 'posts',
             'posts' => $category->posts->load('category', 'user')
         ]);
     }
@@ -45,6 +49,7 @@ class PostController extends Controller
     {
         return view('posts', [
             'title' => "Posts by $user->name",
+            'active' => 'posts',
             'posts' => $user->posts->load('category', 'user')
         ]);
     }
