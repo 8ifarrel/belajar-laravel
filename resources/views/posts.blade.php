@@ -6,9 +6,9 @@
 
     <div class="row justify-content-center mb-4">
       <div class="col-md-6">
-        <form action="/posts" class="input-group">
+        <form action="/posts" class="input-group mb-3">
           <button class="btn border-dark py-2 rounded-pill rounded-end bg-light border-end-0" type="button" id="button-addon1"><i class="fa-solid fa-magnifying-glass"></i></button>
-          
+
           <input type="text" class="form-control border-dark py-2 px-0 rounded-pill rounded-start border-start-0 bg-light" placeholder="Search post here" name="search">
         </form>
       </div>
