@@ -50,47 +50,47 @@
 
 @section('body')
   <main class="m-auto">
-    <form>
-        <h3 class="mb-4">Log In</h3>
-    
-        <!-- Email -->
-        <div class="form-floating">
-            <x-text-input id="Log in" class="block form-control" type="Log in" name="Log in" :value="old('Log in')" required autofocus autocomplete="username" placeholder=""/>
-            <x-input-label for="Log in" :value="__('Email address')" />
-            <x-input-error :messages="$errors->get('Log in')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="form-floating">            
-            <x-text-input id="password" class="block form-control" type="password" name="password" required autocomplete="current-password" placeholder=""/>
-            <x-input-label for="password" :value="__('Password')" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Forgot password -->
-        <div class="mb-3">
-            @if (Route::has('password.request'))
-                <a href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-        </div>
-
-        <div class="d-flex justify-content-between">
-            <!-- Remember me-->
-            <div class="form-check text-start block my-auto">
-                <label for="remember_me" class="form-check-label">
-                    <input id="remember_me" type="checkbox" class="form-check-input" name="remember">
-                    <span>{{ __('Remember me') }}</span>
-                </label>
+        <form>
+            <h3 class="mb-4">Log In</h3>
+        
+            <!-- Email -->
+            <div>
+                <x-input-label for="Log in" :value="__('Email address')" />
+                <x-text-input id="Log in" class="block form-control" type="Log in" name="Log in" :value="old('Log in')" required autofocus autocomplete="username"/>
+                <x-input-error :messages="$errors->get('Log in')" class="mt-2" />
             </div>
 
-            <!-- Log in -->
-            <button class="btn btn-primary" type="submit">Log in</button>
-        </div>
+            <!-- Password -->
+            <div>            
+                <x-input-label for="password" :value="__('Password')" />
+                <x-text-input id="password" class="block form-control" type="password" name="password" required autocomplete="current-password" placeholder=""/>
+                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            </div>
 
-        <!-- Register -->
-        <p class="mt-2 text-center">Not registered? <a href="/register">Register now!</a></p>
+            <!-- Forgot password -->
+            <div class="mb-3">
+                @if (Route::has('password.request'))
+                    <a href="{{ route('password.request') }}">
+                        {{ __('Forgot your password?') }}
+                    </a>
+                @endif
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <!-- Remember me-->
+                <div class="form-check text-start block my-auto">
+                    <label for="remember_me" class="form-check-label">
+                        <input id="remember_me" type="checkbox" class="form-check-input" name="remember">
+                        <span>{{ __('Remember me') }}</span>
+                    </label>
+                </div>
+
+                <!-- Log in -->
+                <button class="btn btn-primary" type="submit">Log in</button>
+            </div>
+
+            <!-- Register -->
+            <p class="mt-2 text-center">Not registered? <a href="/register">Register now!</a></p>
         </form>
     </main>
 @endsection
