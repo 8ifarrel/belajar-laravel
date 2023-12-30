@@ -41,9 +41,9 @@ Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
 Route::get('/categories', [PostController::class, 'categories']);
 
-Route::get('/category/{category:slug}', [PostController::class, 'category']);
+// Route::get('/category/{category:slug}', [PostController::class, 'category']);
 
-Route::get('/author/{user:username}', [PostController::class, 'author']);
+// Route::get('/author/{user:username}', [PostController::class, 'author']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
