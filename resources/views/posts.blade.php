@@ -2,29 +2,31 @@
 
 @section('container')
 
-  <h1 class="mb-4 text-center">{{ $title }}</h1>
+  <h1 class="mb-4 text-center">
+    {{ $title }}
+  </h1>
 
-    <div class="row justify-content-center mb-4">
-      <div class="col-md-6">
+  <div class="row justify-content-center mb-4">
+    <div class="col-md-6">
 
-        <form action="/posts" class="input-group mb-3">
-          @if (request('category'))
-            <input type="hidden" name="category" value ="{{ request('category') }}">
-          @endif
+      <form action="/posts" class="input-group mb-3">
+        @if (request('category'))
+          <input type="hidden" name="category" value ="{{ request('category') }}">
+        @endif
 
-          @if (request('author'))
-          <input type="hidden" name="author" value ="{{ request('author') }}">
-          @endif
+        @if (request('author'))
+        <input type="hidden" name="author" value ="{{ request('author') }}">
+        @endif
 
-          <button class="btn border-dark py-2 rounded-pill rounded-end bg-light border-end-0" type="submit" id="button-addon1">
-            <i class="bi bi-search"></i>
-          </button>
+        <button class="btn border-dark py-2 rounded-pill rounded-end bg-light border-end-0" type="submit" id="button-addon1">
+          <i class="bi bi-search"></i>
+        </button>
 
-          <input type="text" class="form-control border-dark py-2 px-0 rounded-pill rounded-start border-start-0 bg-light" placeholder="Search post here" name="search" value="{{ request('search') }}">
-        </form>
+        <input type="text" class="form-control border-dark py-2 px-0 rounded-pill rounded-start border-start-0 bg-light" placeholder="Search post here" name="search" value="{{ request('search') }}">
+      </form>
 
-      </div>
     </div>
+  </div>
 
   @if ($posts->count())
     <div class="container">
