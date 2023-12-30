@@ -12,8 +12,19 @@ class PostController extends Controller
 {
     public function index()
     {
+        $title = '';
+        if(request('category')) {
+            $category = Category::firstWhere('slug', request('category'));
+            $title = "$category->name Category Posts";
+        } elseif (request('author')) {
+            $author = User::firstWhere('username', request('author'));
+            $title = "Post by $author->name";
+        } else {
+            $title = "All Post";
+        }
+
         return view('posts', [
-            "title" => "All Posts",
+            "title" => $title,
             'active' => 'posts',
             "posts" => Post::with(['author', 'category'])->latest()->filter(request(['search', 'category', 'author']))->get()
         ]);
@@ -37,21 +48,21 @@ class PostController extends Controller
         ]);
     }
 
-    public function category(Category $category)
-    {
-        return view('posts', [
-            'title' => "$category->name Category Posts",
-            'active' => 'posts',
-            'posts' => $category->posts->load('category', 'user')
-        ]);
-    }
+    // public function category(Category $category)
+    // {
+    //     return view('posts', [
+    //         'title' => "$category->name Category Posts",
+    //         'active' => 'posts',
+    //         'posts' => $category->posts->load('category', 'user')
+    //     ]);
+    // }
 
-    public function author(User $user)
-    {
-        return view('posts', [
-            'title' => "Posts by $user->name",
-            'active' => 'posts',
-            'posts' => $user->posts->load('category', 'user')
-        ]);
-    }
+    // public function author(User $user)
+    // {
+    //     return view('posts', [
+    //         'title' => "Posts by $user->name",
+    //         'active' => 'posts',
+    //         'posts' => $user->posts->load('category', 'user')
+    //     ]);
+    // }
 }
