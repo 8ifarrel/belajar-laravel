@@ -25,8 +25,8 @@ class PostController extends Controller
 
         return view('posts', [
             "title" => $title,
-            'active' => 'posts',
-            "posts" => Post::with(['author', 'category'])->latest()->filter(request(['search', 'category', 'author']))->get()
+            "active" => 'posts',
+            "posts" => Post::with(['author', 'category'])->latest()->filter(request(['search', 'category', 'author']))->paginate(6)->withQueryString()
         ]);
     }
 

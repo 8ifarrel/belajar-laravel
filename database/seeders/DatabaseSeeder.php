@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'personal',
         ]);
 
-        Post::factory(20)->create();
+        Post::factory(30)->create();
 
         // Post::create([
         //     'title' => 'Cara Install Python',

@@ -17,7 +17,7 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'title'=> fake()->sentence(mt_rand(2, 6)),
+            'title'=> fake()->sentence(mt_rand(2, 5)),
             'slug' => fake()->slug(mt_rand(2, 5)),
             'excerpt' => fake()->paragraph(),
             'body' => '<p>' . implode('</p><p>', fake()->paragraphs(mt_rand(5, 10))) . '</p>',
