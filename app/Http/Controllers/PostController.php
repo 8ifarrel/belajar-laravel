@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\User;
@@ -14,12 +15,12 @@ class PostController extends Controller
         return view('posts', [
             "title" => "All Posts",
             'active' => 'posts',
-            "posts" => Post::with(['user', 'category'])->latest()->get()
+            "posts" => Post::with(['user', 'category'])->latest()->filter(request(['search', 'category']))->get()
         ]);
     }
 
     public function show(Post $post)
-    {    
+    {
         return view('post', [
             "title" => $post->title,
             'active' => 'posts',
@@ -33,7 +34,7 @@ class PostController extends Controller
             'title' => 'Post Categories',
             'active' => 'categories',
             'categories' => Category::all()
-        ]); 
+        ]);
     }
 
     public function category(Category $category)
