@@ -67,42 +67,42 @@
 
                     <!-- Name -->
                     <div class="mt-2">
-                        <x-input-label for="name" :value="__('Name')" />
-                        <x-text-input id="name" class="block form-control border border-dark mt-2" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-                        {{-- <x-input-error :messages="$errors->get('name')" class="mt-2" /> --}}
+                        <label for="name">Name</label>
+                        <input id="name" class="block form-control border mt-2" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                        {{-- Add Bootstrap error messaage here --}}
                     </div>
 
                     <!-- Userame -->
                     <div class="mt-2">
-                        <x-input-label for="username" :value="__('Username')" />
+                        <label for="username">Username</label>
                         <x-text-input id="username" class="block form-control mt-2" type="text" name="username" :value="old('username')" required autofocus autocomplete="username" />
-                        {{-- <x-input-error :messages="$errors->get('username')" class="mt-2" /> --}}
+                        <x-input-error :messages="$errors->get('username')" class="mt-2" />
                     </div>
 
                     <!-- Email address -->
                     <div class="mt-2">
-                        <x-input-label for="email" :value="__('Email')" />
-                        <x-text-input id="email" class="block form-control border border-dark mt-2" type="email" name="email" :value="old('email')" required autocomplete="username" />
-                        {{-- <x-input-error :messages="$errors->get('email')" class="mt-2" /> --}}
+                        <label for="email">Email</label>
+                        <x-text-input id="email" class="block form-control border mt-2" type="email" name="email" :value="old('email')" required autocomplete="username" />
+                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
 
                     <!-- Password -->
                     <div class="mt-2">
                         <x-input-label for="password" :value="__('Password')" />
 
-                        <x-text-input id="password" class="block form-control border border-dark mt-2"
+                        <x-text-input id="password" class="block form-control border mt-2"
                                         type="password"
                                         name="password"
                                         required autocomplete="new-password" />
 
-                        {{-- <x-input-error :messages="$errors->get('password')" class="mt-2" /> --}}
+                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     </div>
 
                     <!-- Confirm Password -->
                     <div class="mt-2">
                         <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
-                        <x-text-input id="password_confirmation" class="block form-control border border-dark mt-2"
+                        <x-text-input id="password_confirmation" class="block form-control border mt-2"
                                         type="password"
                                         name="password_confirmation" required autocomplete="new-password" />
 
