@@ -59,9 +59,8 @@
     <div class="row justify-content-center">
         <div class="col-sm-4">
             <main class="m-auto">
-                <x-auth-session-status class="mb-4" :status="session('status')" />
-
-                <form method="POST" action="{{ route('login') }}">
+                
+                <form method="POST" action="{{ route('register') }}">
                     @csrf
             
                     <h2 class="mb-4">Register</h2>
