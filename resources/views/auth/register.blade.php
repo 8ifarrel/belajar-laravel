@@ -57,35 +57,70 @@
 @section('container')
 
     <div class="row justify-content-center">
-        <div class="col-lg-4">
-            
-            <main>
+        <div class="col-sm-4">
+            <main class="m-auto">
+                
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
-                    
-                    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+            
+                    <h2 class="mb-4">Register</h2>
 
-                    <div class="form-floating">
-                      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                      <label for="floatingInput">Email address</label>
+                    <!-- Name -->
+                    <div class="mt-2">
+                        <x-input-label for="name" :value="__('Name')" />
+                        <x-text-input id="name" class="block form-control border border-dark mt-2" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                        {{-- <x-input-error :messages="$errors->get('name')" class="mt-2" /> --}}
                     </div>
-                    <div class="form-floating">
-                      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                      <label for="floatingPassword">Password</label>
-                    </div>
-                
-                    <div class="form-check text-start my-3">
-                      <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Remember me
-                      </label>
-                    </div>
-                    <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
-                    <p class="mt-5 mb-3 text-body-secondary">&copy; 2017-2023</p>
 
+                    <!-- Userame -->
+                    <div class="mt-2">
+                        <x-input-label for="username" :value="__('Username')" />
+                        <x-text-input id="username" class="block form-control mt-2" type="text" name="username" :value="old('username')" required autofocus autocomplete="username" />
+                        {{-- <x-input-error :messages="$errors->get('username')" class="mt-2" /> --}}
+                    </div>
+
+                    <!-- Email address -->
+                    <div class="mt-2">
+                        <x-input-label for="email" :value="__('Email')" />
+                        <x-text-input id="email" class="block form-control border border-dark mt-2" type="email" name="email" :value="old('email')" required autocomplete="username" />
+                        {{-- <x-input-error :messages="$errors->get('email')" class="mt-2" /> --}}
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mt-2">
+                        <x-input-label for="password" :value="__('Password')" />
+
+                        <x-text-input id="password" class="block form-control border border-dark mt-2"
+                                        type="password"
+                                        name="password"
+                                        required autocomplete="new-password" />
+
+                        {{-- <x-input-error :messages="$errors->get('password')" class="mt-2" /> --}}
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="mt-2">
+                        <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+
+                        <x-text-input id="password_confirmation" class="block form-control border border-dark mt-2"
+                                        type="password"
+                                        name="password_confirmation" required autocomplete="new-password" />
+
+                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                    </div>
+
+                    <!-- Submit button -->
+                    <x-primary-button class="btn btn-primary w-100 py-2 mt-3">
+                        {{ __('Register') }}
+                    </x-primary-button>
+
+                    <!-- Log in button -->
+                    <p class="mt-3 text-center">
+                        Already registered? <a href="/login"> Log in here!</a>
+                    </p>
                 </form>
-            </main>
 
+            </main>
         </div>
     </div>
 @endsection
