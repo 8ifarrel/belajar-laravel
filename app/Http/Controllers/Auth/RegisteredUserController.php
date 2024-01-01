@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -29,13 +28,13 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'lowercase', 'max:255', 'unique:'.User::class],
             'email' => ['required', 'string', 'lowercase', 'email:dns', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::min(8)->mixedCase()->letters()->numbers()->symbols()->uncompromised()],
+            'password' => ['required', 'confirmed', Rules\Password::min(8)->mixedCase()->letters()->numbers()->uncompromised()],
         ]);
 
         $user = User::create([
@@ -47,8 +46,6 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        session()->flash('success', 'Registration successful. Please log in.');
-
-        return view('auth.Login');
+        return redirect('/login')->with('success', 'Registration successful. Please log in');
     }
 }
