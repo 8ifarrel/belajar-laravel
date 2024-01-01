@@ -68,45 +68,66 @@
                     <!-- Name -->
                     <div class="mt-2">
                         <label for="name">Name</label>
-                        <input id="name" class="block form-control mt-2 is-invalid" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-                        {{-- Add Bootstrap error messaage here --}}
+
+                        <input id="name" class="block form-control mt-2 @error('name') is-invalid @enderror" type="text" name="name" :value="old('name')"/>
+
+                        @error('name')
+                            <div class="invalid-feedback">
+                                {{ $message }} 
+                            </div>
+                        @enderror
                     </div>
 
                     <!-- Userame -->
                     <div class="mt-2">
                         <label for="username">Username</label>
-                        <x-text-input id="username" class="block form-control mt-2" type="text" name="username" :value="old('username')" required autofocus autocomplete="username" />
-                        <x-input-error :messages="$errors->get('username')" class="mt-2" />
+                        
+                        <input id="username" class="block form-control mt-2 @error('username') is-invalid @enderror" type="text" name="username" :value="old('username')"/>
+                        
+                        @error('username')
+                            <div class="invalid-feedback">
+                                {{ $message }} 
+                            </div>
+                        @enderror
                     </div>
 
                     <!-- Email address -->
                     <div class="mt-2">
                         <label for="email">Email</label>
-                        <x-text-input id="email" class="block form-control border mt-2" type="email" name="email" :value="old('email')" required autocomplete="username" />
-                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                        
+                        <input id="email" class="block form-control mt-2 @error('email') is-invalid @enderror" type="email" name="email" :value="old('email')"/>
+                        
+                        @error('email')
+                            <div class="invalid-feedback">
+                                {{ $message }} 
+                            </div>
+                        @enderror
                     </div>
 
                     <!-- Password -->
                     <div class="mt-2">
-                        <x-input-label for="password" :value="__('Password')" />
+                        <label for="password">Password</label>
 
-                        <x-text-input id="password" class="block form-control border mt-2"
-                                        type="password"
-                                        name="password"
-                                        required autocomplete="new-password" />
-
-                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                        <input id="password" class="block form-control mt-2 @error('password') is-invalid @enderror" type="password" name="password" />
+                        
+                        @error('password')
+                            <div class="invalid-feedback">
+                                {{ $message }} 
+                            </div>
+                        @enderror
                     </div>
 
                     <!-- Confirm Password -->
                     <div class="mt-2">
-                        <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+                        <label for="password">Comfirm Password</label>
 
-                        <x-text-input id="password_confirmation" class="block form-control border mt-2"
-                                        type="password"
-                                        name="password_confirmation" required autocomplete="new-password" />
-
-                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                        <input id="password_confirmation" class="block form-control mt-2 @error('password_confirmation') is-invalid @enderror" type="password" name="password_confirmation" />
+                        
+                        @error('password_confirmation')
+                            <div class="invalid-feedback">
+                                {{ $message }} 
+                            </div>
+                        @enderror
                     </div>
 
                     <!-- Submit button -->
