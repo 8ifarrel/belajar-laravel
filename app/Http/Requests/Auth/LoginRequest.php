@@ -45,7 +45,8 @@ class LoginRequest extends FormRequest
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                session()->flash('login-error', 'Log in error. Please try again.')
+                // 'email' => trans('auth.failed'),
             ]);
         }
 

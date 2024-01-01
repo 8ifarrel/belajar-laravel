@@ -12,6 +12,13 @@
                 </div>    
             @endif
 
+            @if (session()->has('login-error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('login-error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>    
+            @endif
+
             <main class="m-auto">
                 <x-auth-session-status class="mb-4" :status="session('status')" />
 
