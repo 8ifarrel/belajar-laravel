@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -46,10 +47,8 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        session()->flash('success', 'Registration successful. Please log in');
+        session()->flash('success', 'Registration successful. Please log in.');
 
-        // Auth::login($user); nyalakan ini jika setelah register ingin langsung melakukan login secara otomatis
-
-        return redirect(RouteServiceProvider::HOME);
+        return view('auth.Login');
     }
 }
