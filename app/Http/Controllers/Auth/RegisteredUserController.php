@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'lowercase', 'max:255', 'unique:'.User::class],
             'email' => ['required', 'string', 'lowercase', 'email:dns', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed', Rules\Password::min(8)->mixedCase()->letters()->numbers()->symbols()->uncompromised()],
         ]);
 
         $user = User::create([
@@ -46,7 +46,9 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        // Auth::login($user); nyalakan ini jika ingin setelah register langsung melakukan login secara otomatis  
+        session()->flash('success', 'Registration successful. Please log in');
+
+        // Auth::login($user); nyalakan ini jika setelah register ingin langsung melakukan login secara otomatis
 
         return redirect(RouteServiceProvider::HOME);
     }
