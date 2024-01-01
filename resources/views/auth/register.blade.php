@@ -81,7 +81,7 @@
                     <!-- Userame -->
                     <div class="mt-2">
                         <label for="username">Username</label>
-                        
+
                         <input id="username" class="block form-control mt-2 @error('username') is-invalid @enderror" type="text" name="username" value="{{ old('username') }}" required/>
                         
                         @error('username')
@@ -96,7 +96,7 @@
                         <label for="email">Email</label>
                         
                         <input id="email" class="block form-control mt-2 @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" required/>
-                        
+
                         @error('email')
                             <div class="invalid-feedback">
                                 {{ $message }} 

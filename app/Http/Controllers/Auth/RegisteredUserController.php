@@ -46,7 +46,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Auth::login($user);
+        // Auth::login($user); nyalakan ini jika ingin setelah register langsung melakukan login secara otomatis  
 
         return redirect(RouteServiceProvider::HOME);
     }
