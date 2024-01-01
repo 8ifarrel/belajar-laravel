@@ -68,7 +68,7 @@
                     <!-- Name -->
                     <div class="mt-2">
                         <label for="name">Name</label>
-                        <input id="name" class="block form-control border mt-2" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                        <input id="name" class="block form-control mt-2 is-invalid" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                         {{-- Add Bootstrap error messaage here --}}
                     </div>
 
